@@ -19,11 +19,18 @@ describe "Shopping Cart Requests" do
   end
 
   context "when I add an item to the cart" do
-    it "should show the newly created item in the cart" do
+    before(:each) do
       params = { :product => product.id, :cart_item => {:quantity => 10} }
       page.driver.put(shopping_cart_path(product), params) 
       visit '/shopping_cart'
+    end
+
+    it "should show the newly created item in the cart" do
       find_link(product.title).visible?
+    end
+
+    it "should show the quantity for the item" do
+
     end
   end
 end
